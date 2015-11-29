@@ -10,7 +10,8 @@ h1 {
 	font-weight: 900;
 	letter-spacing: 4px;
 	word-spacing: 8px;
-	margin-top: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 h2 {
@@ -20,5 +21,10 @@ h2 {
 }
 
 #contenedor-principal {
-	
+	width: 100%;
+}
+
+#mapa {
+	width: 95%;
+	height: 525px;
 }
