@@ -20,6 +20,19 @@ h2 {
 	font-weight: 500;
 }
 
+h3 {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 900;
+	color: #000000;
+}
+
+h4 {
+	text-align: center;
+	font-size: 14px;
+	font-weight: 900;
+}
+
 #contenedor-principal {
 	width: 100%;
 }
@@ -27,4 +40,26 @@ h2 {
 #mapa {
 	width: 95%;
 	height: 525px;
+}
+
+#pronostico {
+	width: 650px;
+	height: 150px;
+}
+
+.dia {
+	background-color: #000064;
+	float: left;
+	border: 2px solid black;
+	width: 130px;
+	height: 150px;
+}
+
+.dia p {
+	padding: 10px;
+}
+
+.dia span {
+	font-weight: 500;
+	margin-right: 10px;
 }
