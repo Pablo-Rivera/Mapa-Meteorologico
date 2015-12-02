@@ -107,7 +107,7 @@ Ciudad.prototype.obtenerClima = function(){
 						this.temperatura = Math.floor(data.list[0].main.temp);
 						this.iconoClima = 'imagenes/' + data.list[0].weather[0].icon + '.png';
 						this.marcador.setTitle(this.provincia + ', ' + this.nombre + ' ' + this.temperatura + '*C');
-						this.marcador.setIcon(this.iconoClima);
+						this.marcador.setIcon({url: this.iconoClima, anchor: new google.maps.Point(25, 25)});
 					}, this),
 		error: function(){
 					alert('Error al Obtener el Clima');
@@ -122,7 +122,7 @@ Ciudad.prototype.obtenerPronosticoExtendido = function(){
 		type: 'GET',
 		async: true,
 		dataType: 'JSON',
-		url: 'http://api.openweathermap.org/data/2.5/find?lat=' + this.latitud + '&lon=' + this.longitud + '&cnt=5&units=metric&appid=2de143494c0b295cca9337e1e96b00e0',
+		url: 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + this.latitud + '&lon=' + this.longitud + '&cnt=5&units=metric&appid=2de143494c0b295cca9337e1e96b00e0',
 		success: $.proxy(
 					function(data){
 						$.proxy(
@@ -130,30 +130,40 @@ Ciudad.prototype.obtenerPronosticoExtendido = function(){
 								url: 'js/templates/pronosticoExtendido.mst',
 								success: $.proxy(
 											function(template){
+												var hoy = new Date().getDay();
+												var dias = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES'];
 												var variables = {
 													'nombre': this.nombre,
-													'tempMaxHoy': Math.floor(data.list[0].main.temp_max),
-													'tempMinHoy': Math.floor(data.list[0].main.temp_min),
-													'humedadHoy': Math.floor(data.list[0].main.humidity),
-													'presionHoy': Math.floor(data.list[0].main.pressure),
-													'tempMaxA': Math.floor(data.list[1].main.temp_max),
-													'tempMinA': Math.floor(data.list[1].main.temp_min),
-													'humedadA': Math.floor(data.list[1].main.humidity),
-													'presionA': Math.floor(data.list[1].main.pressure),
-													'tempMaxB': Math.floor(data.list[2].main.temp_max),
-													'tempMinB': Math.floor(data.list[2].main.temp_min),
-													'humedadB': Math.floor(data.list[2].main.humidity),
-													'presionB': Math.floor(data.list[2].main.pressure),
-													'tempMaxC': Math.floor(data.list[3].main.temp_max),
-													'tempMinC': Math.floor(data.list[3].main.temp_min),
-													'humedadC': Math.floor(data.list[3].main.humidity),
-													'presionC': Math.floor(data.list[3].main.pressure),
-													'tempMaxD': Math.floor(data.list[4].main.temp_max),
-													'tempMinD': Math.floor(data.list[4].main.temp_min),
-													'humedadD': Math.floor(data.list[4].main.humidity),
-													'presionD': Math.floor(data.list[4].main.pressure)
+													'iconoHoy': data.list[0].weather[0].icon,
+													'tempMinHoy': Math.floor(data.list[0].temp.min),
+													'tempMaxHoy': Math.floor(data.list[0].temp.max),
+													'humedadHoy': Math.floor(data.list[0].humidity),
+													'presionHoy': Math.floor(data.list[0].pressure),
+													'diaB': dias[++hoy],
+													'iconoB': data.list[1].weather[0].icon,
+													'tempMinB': Math.floor(data.list[1].temp.min),
+													'tempMaxB': Math.floor(data.list[1].temp.max),
+													'humedadB': Math.floor(data.list[1].humidity),
+													'presionB': Math.floor(data.list[1].pressure),
+													'diaC': dias[++hoy],
+													'iconoC': data.list[2].weather[0].icon,
+													'tempMinC': Math.floor(data.list[2].temp.min),
+													'tempMaxC': Math.floor(data.list[2].temp.max),
+													'humedadC': Math.floor(data.list[2].humidity),
+													'presionC': Math.floor(data.list[2].pressure),
+													'diaD': dias[++hoy],
+													'iconoD': data.list[3].weather[0].icon,
+													'tempMinD': Math.floor(data.list[3].temp.min),
+													'tempMaxD': Math.floor(data.list[3].temp.max),
+													'humedadD': Math.floor(data.list[3].humidity),
+													'presionD': Math.floor(data.list[3].pressure),
+													'diaE': dias[++hoy],
+													'iconoE': data.list[4].weather[0].icon,
+													'tempMinE': Math.floor(data.list[4].temp.min),
+													'tempMaxE': Math.floor(data.list[4].temp.max),
+													'humedadE': Math.floor(data.list[4].humidity),
+													'presionE': Math.floor(data.list[4].pressure)
 												};
-												//console.log(data);
 												this.pronosticoExtendido = Mustache.render(template, variables);
 												this.ventanaPronosticoExtendido.setContent(this.pronosticoExtendido);
 										 }, this)
@@ -167,7 +177,7 @@ Ciudad.prototype.crearMarcador = function(){
 	this.marcador = new google.maps.Marker({
 		position: new google.maps.LatLng(this.latitud, this.longitud),
 		title: this.provincia + ', ' + this.nombre + ' ' + this.temperatura + '*C',
-		icon: this.iconoClima,
+		icon: {url: this.iconoClima, anchor: new google.maps.Point(25, 25)}
 	});
 	this.marcador.addListener('click', $.proxy(function(){
 		this.obtenerPronosticoExtendido();
