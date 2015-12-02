@@ -1,35 +1,35 @@
 <div id="pronostico">
 	<h3>{{nombre}}</h3>
 	<div class="dia">
-		<h4>HOY<img src="imagenes/{{iconoHoy}}.png"></h4>
+		<h4>HOY<img src="imagenes/{{iconoHoy}}.png"></img></h4>
 		<p><span>Temp Min:</span>{{tempMinHoy}}°C</br>
 		<span>Temp Max:</span>{{tempMaxHoy}}°C</br>
 		<span>Humedad:</span>{{humedadHoy}}%</br>
 		<span>Presion:</span>{{presionHoy}}Pa</p>
 	</div>
 	<div class="dia">
-		<h4>{{diaB}}<img src="imagenes/{{iconoB}}.png"></h4>
+		<h4>{{diaB}}<img src="imagenes/{{iconoB}}.png"></img></h4>
 		<p><span>Temp Min:</span>{{tempMinB}}°C</br>
 		<span>Temp Max:</span>{{tempMaxB}}°C</br>
 		<span>Humedad:</span>{{humedadB}}%</br>
 		<span>Presion:</span>{{presionB}}Pa</p>
 	</div>
 	<div class="dia">
-		<h4>{{diaC}}<img src="imagenes/{{iconoC}}.png"></h4>
+		<h4>{{diaC}}<img src="imagenes/{{iconoC}}.png"></img></h4>
 		<p><span>Temp Min:</span>{{tempMinC}}°C</br>
 		<span>Temp Max:</span>{{tempMaxC}}°C</br>
 		<span>Humedad:</span>{{humedadC}}%</br>
 		<span>Presion:</span>{{presionC}}Pa</p>
 	</div>
 	<div class="dia">
-		<h4>{{diaD}}<img src="imagenes/{{iconoD}}.png"></h4>
+		<h4>{{diaD}}<img src="imagenes/{{iconoD}}.png"></img></h4>
 		<p><span>Temp Min:</span>{{tempMinD}}°C</br>
 		<span>Temp Max:</span>{{tempMaxD}}°C</br>
 		<span>Humedad:</span>{{humedadD}}%</br>
 		<span>Presion:</span>{{presionD}}Pa</p>
 	</div>
 	<div class="dia">
-		<h4>{{diaE}}<img src="imagenes/{{iconoE}}.png"></h4>
+		<h4>{{diaE}}<img src="imagenes/{{iconoE}}.png"></img></h4>
 		<p><span>Temp Min:</span>{{tempMinE}}°C</br>
 		<span>Temp Max:</span>{{tempMaxE}}°C</br>
 		<span>Humedad:</span>{{humedadE}}%</br>

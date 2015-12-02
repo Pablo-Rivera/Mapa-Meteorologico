@@ -87,7 +87,7 @@ function Ciudad(provincia, nombre, latitud, longitud){
 	this.longitud = longitud;
 	this.ventanaPronosticoExtendido = '';
 	this.marcador = '';
-	this.pronosticoExtendido = '<img src="imagenes/loading.png" class="center-block">';
+	this.pronosticoExtendido = '<img src="imagenes/loading.png" class="center-block"></img>';
 	this.temperatura = 'N/A';
 	this.iconoClima = 'imagenes/loading.png';
 	this.crearVentanaPronosticoExtendido();
@@ -131,7 +131,7 @@ Ciudad.prototype.obtenerPronosticoExtendido = function(){
 								success: $.proxy(
 											function(template){
 												var hoy = new Date().getDay();
-												var dias = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES'];
+												var dias = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
 												var variables = {
 													'nombre': this.nombre,
 													'iconoHoy': data.list[0].weather[0].icon,
@@ -139,25 +139,25 @@ Ciudad.prototype.obtenerPronosticoExtendido = function(){
 													'tempMaxHoy': Math.floor(data.list[0].temp.max),
 													'humedadHoy': Math.floor(data.list[0].humidity),
 													'presionHoy': Math.floor(data.list[0].pressure),
-													'diaB': dias[++hoy],
+													'diaB': dias[++hoy%7],
 													'iconoB': data.list[1].weather[0].icon,
 													'tempMinB': Math.floor(data.list[1].temp.min),
 													'tempMaxB': Math.floor(data.list[1].temp.max),
 													'humedadB': Math.floor(data.list[1].humidity),
 													'presionB': Math.floor(data.list[1].pressure),
-													'diaC': dias[++hoy],
+													'diaC': dias[++hoy%7],
 													'iconoC': data.list[2].weather[0].icon,
 													'tempMinC': Math.floor(data.list[2].temp.min),
 													'tempMaxC': Math.floor(data.list[2].temp.max),
 													'humedadC': Math.floor(data.list[2].humidity),
 													'presionC': Math.floor(data.list[2].pressure),
-													'diaD': dias[++hoy],
+													'diaD': dias[++hoy%7],
 													'iconoD': data.list[3].weather[0].icon,
 													'tempMinD': Math.floor(data.list[3].temp.min),
 													'tempMaxD': Math.floor(data.list[3].temp.max),
 													'humedadD': Math.floor(data.list[3].humidity),
 													'presionD': Math.floor(data.list[3].pressure),
-													'diaE': dias[++hoy],
+													'diaE': dias[++hoy%7],
 													'iconoE': data.list[4].weather[0].icon,
 													'tempMinE': Math.floor(data.list[4].temp.min),
 													'tempMaxE': Math.floor(data.list[4].temp.max),
